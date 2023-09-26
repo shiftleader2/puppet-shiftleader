@@ -1,0 +1,4 @@
+# puppet-shiftleader
+
+This module installs and configures the shiftleader2 machine-administration
+tool, with plugins and web-interface.
