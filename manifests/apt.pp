@@ -18,7 +18,7 @@ class shiftleader::apt (
     release  => $release,
     repos    => 'main',
     key      => {
-      'id'    => '72C3A8E3E830504BA71A8AAE733E24CF0D6F268E',
+      'id'     => '72C3A8E3E830504BA71A8AAE733E24CF0D6F268E',
       'source' => 'https://repo.it.ntnu.no/shiftleader2/shiftleader2.gpg.key'
     },
     before   => Anchor['shiftleader::install::begin'],

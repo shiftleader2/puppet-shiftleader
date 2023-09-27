@@ -4,6 +4,7 @@ class shiftleader::deps {
   -> Package<| tag == 'shiftleader-package' |>
   ~> anchor { 'shiftleader::install::end': }
   -> anchor { 'shiftleader::config::begin': }
+  -> Ini_setting<| tag == 'shiftleader-config' |>
   ~> anchor { 'shiftleader::service::begin': }
   ~> Service<| tag == 'shiftleader-service' |>
   ~> anchor { 'shiftleader::service::end': }
