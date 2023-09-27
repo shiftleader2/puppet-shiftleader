@@ -1,5 +1,5 @@
 #Configures the puppetmaster to use the ShiftLeader2 ENC.
-class shiftleader::integration::puppetenc {
+class shiftleader::integration::puppet::enc {
   include ::shiftleader::worker::puppet
 
   ini_setting { 'Shiftleader2-puppetenc-terminus':
