@@ -3,7 +3,7 @@
 class shiftleader::integration::puppet::autosign {
   include ::shiftleader::worker::puppet
 
-  ini_setting { 'Shiftleader2-puppetenc-enc':
+  ini_setting { 'Shiftleader2-puppet-autosign':
     ensure  => 'present',
     path    => '/etc/puppetlabs/puppet/puppet.conf',
     section => 'master',
