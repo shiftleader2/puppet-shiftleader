@@ -1,6 +1,6 @@
 # Configures the ShiftLeader2 repositories.
 class shiftleader::apt (
-    Enum['present','absent'] $ensure
+  Enum['present','absent'] $ensure = 'present',
 ) {
   include ::apt
   include ::shiftleader::deps
