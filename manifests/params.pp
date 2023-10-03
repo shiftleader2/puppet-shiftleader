@@ -2,6 +2,8 @@
 class shiftleader::params (
   String                     $api_name,
   String                     $fernet_key,
+  String                     $puppetcaserver,
+  String                     $puppetserver,
   String                     $web_name,
 
   String                     $admin_group = 'Administrators',
