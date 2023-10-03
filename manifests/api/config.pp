@@ -46,7 +46,7 @@ class shiftleader::api::config (
       setting => 'admin_group',
       value   => $admin_group,
       *       => $common;
-    'sl2api-admingroup':
+    'sl2api-cors':
       section => 'cors',
       setting => 'origin',
       value   => $web_url,
