@@ -23,7 +23,7 @@ define shiftleader::api::vhost (
     docroot                     => "/var/lib/shiftleader2",
     servername                  => $name,
     tag                         => 'shiftleader-vhost',
-    wsgi_pass_authorization     => 'on'
+    wsgi_pass_authorization     => 'on',
     wsgi_daemon_process         => 'sl2',
     wsgi_daemon_process_options => {
       processes => 1,
@@ -32,7 +32,7 @@ define shiftleader::api::vhost (
       group     => 'www-data',
     }
     wsgi_script_aliases         => { 
-      '/' => '/var/lib/shiftleader2/shiftleader2.wsgi' 
+      '/' => '/var/lib/shiftleader2/shiftleader2.wsgi', 
     },
     *                           => $tls_options,
   }
