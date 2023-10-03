@@ -57,9 +57,10 @@ class shiftleader::api::config (
       value   => $web_url,
       *       => $common;
     'sl2api-db':
-      section => 'database',
-      setting => 'uri',
-      value   => $db_connection,
-      *       => $common;
+      section   => 'database',
+      setting   => 'uri',
+      show_diff => false,
+      value     => $db_connection,
+      *         => $common;
   }
 }
