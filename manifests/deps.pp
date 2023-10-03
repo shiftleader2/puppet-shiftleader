@@ -1,6 +1,6 @@
 # Defines anchors to aid in the ordering when installing shiftleader.
 class shiftleader::deps {
-  anchor { 'shiftleader::repo::begin' }
+  anchor { 'shiftleader::repo::begin': }
   -> Apt::Source<| tag == 'shiftleader-repo' |>
   -> anchor {'shiftleader::install::begin' : }
   -> Package<| tag == 'shiftleader-package' |>

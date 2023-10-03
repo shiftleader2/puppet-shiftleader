@@ -1,5 +1,6 @@
 # Installs and configures the shiftleader2 API 
 class shiftleader::api (
+  String                     $api_name,
   Enum['running', 'stopped'] $service_ensure = 'running',
   Boolean                    $service_enable = true,
 ){
@@ -11,6 +12,5 @@ class shiftleader::api (
     tag    => 'shiftleader-package',
   }
   
-  ::shiftleader::api::vhost { 'api.shiftleader.rothaugane.com':
-  }
+  ::shiftleader::api::vhost { ${api_name}: }
 }
