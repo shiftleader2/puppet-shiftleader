@@ -1,9 +1,9 @@
 # Installs and configures the puppet-related workers for ShiftLeader2
 class shiftleader::worker::puppet (
-  Enum['running', 'stopped'] $service_ensure = 'running',
-  Boolean                    $service_enable = true,
-){
-  $sl2_api = lookup('shiftleader::api', Stdlib::HTTPUrl)
+  String                     $api_name       = $shiftleader::params::api_name,
+  Enum['running', 'stopped'] $service_ensure = $shiftleader::params::service_ensure, 
+  Boolean                    $service_enable = $shiftleader::params::service_enable,
+) inherits shiftleader::params {
   $sl2_username = lookup('shiftleader::worker::username', String)
   $sl2_password = lookup('shiftleader::worker::password', String)
 
@@ -29,7 +29,7 @@ class shiftleader::worker::puppet (
     path    => '/etc/shiftleader2/workers.ini',
     section => 'api',
     setting => 'location',
-    value   => $sl2_api,
+    value   => $api_name,
     tag     => 'shiftleader-config',
   }
 
