@@ -1,6 +1,6 @@
 # Installs and configures the puppet-related workers for ShiftLeader2
 class shiftleader::worker::puppet (
-  String                     $api_name       = $shiftleader::params::api_name,
+  String                     $api_url       = $shiftleader::params::api_url,
   Enum['running', 'stopped'] $service_ensure = $shiftleader::params::service_ensure, 
   Boolean                    $service_enable = $shiftleader::params::service_enable,
 ) inherits shiftleader::params {
@@ -29,7 +29,7 @@ class shiftleader::worker::puppet (
     path    => '/etc/shiftleader2/workers.ini',
     section => 'api',
     setting => 'location',
-    value   => $api_name,
+    value   => $api_url,
     tag     => 'shiftleader-config',
   }
 
