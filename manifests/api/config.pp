@@ -1,11 +1,15 @@
 # Configures the shiftleader API
 class shiftleader::api::config (
-  $admin_group    = $shiftleader::params::admin_group,
-  $api_url        = $shiftleader::params::api_url,
-  $fernet_key     = $shiftleader::params::fernet_key,
-  $puppetcaserver = $shiftleader::params::puppetcaserver,
-  $puppetserver   = $shiftleader::params::puppetserver,
-  $web_url        = $shiftleader::params::web_url,
+  $admin_group       = $shiftleader::params::admin_group,
+  $api_url           = $shiftleader::params::api_url,
+  $database_server   = $shiftleader::params::database_server,
+  $database_name     = $shiftleader::params::database_name,
+  $database_username = $shiftleader::params::database_username,
+  $database_password = $shiftleader::params::database_password,
+  $fernet_key        = $shiftleader::params::fernet_key,
+  $puppetcaserver    = $shiftleader::params::puppetcaserver,
+  $puppetserver      = $shiftleader::params::puppetserver,
+  $web_url           = $shiftleader::params::web_url,
 ) inherits shiftleader::params {
   include ::shiftleader::deps
 
@@ -14,6 +18,8 @@ class shiftleader::api::config (
     'path'   => '/etc/shiftleader2/settings.ini',
     'tag'    => 'shiftleader-config',
   }
+  $db_connection = "mysql+pymysql://${database_username}" + 
+    ":${database_password}@${database_server}/${database_name}"
 
   ini_setting {
     'sl2api-loglevel':
@@ -50,6 +56,11 @@ class shiftleader::api::config (
       section => 'cors',
       setting => 'origin',
       value   => $web_url,
+      *       => $common;
+    'sl2api-db':
+      section => 'database',
+      setting => 'uri',
+      value   => $db_connection,
       *       => $common;
   }
 }
