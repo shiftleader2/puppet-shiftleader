@@ -30,7 +30,7 @@ define shiftleader::api::vhost (
       threads   => 4, 
       user      => 'sl2',
       group     => 'www-data',
-    }
+    },
     wsgi_script_aliases         => { 
       '/' => '/var/lib/shiftleader2/shiftleader2.wsgi', 
     },
