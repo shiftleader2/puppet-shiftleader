@@ -36,5 +36,9 @@ define shiftleader::api::vhost (
     },
     *                           => $tls_options,
   }
+
+  # Make config-changes in shiftleader restart the webserver as well.
+  Anchor['shiftleader::service::begin']
+  ~> Service<| name == 'httpd' |>
   
 }

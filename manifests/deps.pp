@@ -12,8 +12,4 @@ class shiftleader::deps {
   ~> anchor { 'shiftleader::service::begin': }
   ~> Service<| tag == 'shiftleader-service' |>
   ~> anchor { 'shiftleader::service::end': }
-
-  # Make sure to restart http-server when config changes
-  Anchor['shiftleader::service::begin'] 
-  ~> Service<| name == 'httpd' |> 
 }
