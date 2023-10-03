@@ -16,19 +16,40 @@ class shiftleader::api::config (
   }
 
   ini_setting {
-    'sl2api-loglevel': { 'section' => 'DEFAULT', 'setting' => 'loglevel',
-      value => 'info', * => $common },
-    'sl2api-api': { 'section' => 'url', 'setting' => 'api',
-      value => $api_url, * => $common },
-    'sl2api-puppetserver': { 'section' => 'url', 'setting' => 'puppetserver',
-      value => $puppetserver, * => $common },
-    'sl2api-puppetcaserver': { 'section' => 'url', 'setting' => 'puppetcaserver',
-      value => $puppetcaserver, * => $common },
-    'sl2api-fernet': { 'section' => 'auth', 'setting' => 'fernet-key',
-      value => $fernet_key, * => $common },
-    'sl2api-admingroup': { 'section' => 'auth', 'setting' => 'admin_group',
-      value => $admin_group, * => $common },
-    'sl2api-admingroup': { 'section' => 'cors', 'setting' => 'origin',
-      value => $web_url, * => $common },
+    'sl2api-loglevel':
+      section => 'DEFAULT',
+      setting => 'loglevel',
+      value   => 'info',
+      *       => $common;
+    'sl2api-api':
+      section => 'url',
+      setting => 'api',
+      value   => $api_url,
+      *       => $common;
+    'sl2api-puppetserver':
+      section => 'url',
+      setting => 'puppetserver',
+      value   => $puppetserver,
+      *       => $common;
+    'sl2api-puppetcaserver':
+      section => 'url',
+      setting => 'puppetcaserver',
+      value   => $puppetcaserver,
+      *       => $common;
+    'sl2api-fernet':
+      section => 'auth',
+      setting => 'fernet-key',
+      value   => $fernet_key,
+      *       => $common;
+    'sl2api-admingroup':
+      section => 'auth',
+      setting => 'admin_group',
+      value   => $admin_group,
+      *       => $common;
+    'sl2api-admingroup':
+      section => 'cors',
+      setting => 'origin',
+      value   => $web_url,
+      *       => $common;
   }
 }
