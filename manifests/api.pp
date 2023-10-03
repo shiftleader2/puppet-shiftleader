@@ -4,7 +4,7 @@ class shiftleader::api (
   Enum['running', 'stopped'] $service_ensure = 'running',
   Boolean                    $service_enable = true,
 ){
-  require ::shiftleader::apt
+  include ::shiftleader::apt
   include ::shiftleader::deps
   
   package { 'shiftleader2-api':
@@ -12,5 +12,5 @@ class shiftleader::api (
     tag    => 'shiftleader-package',
   }
   
-  ::shiftleader::api::vhost { ${api_name}: }
+  ::shiftleader::api::vhost { $api_name: }
 }
