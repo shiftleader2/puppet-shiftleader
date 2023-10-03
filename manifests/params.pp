@@ -1,25 +1,26 @@
 # Common parameters for the shiftleader module
 class shiftleader::params (
+  String                     $api_name,
+  String                     $fernet_key,
+  String                     $web_name,
+
   String                     $admin_group = 'Administrators',
   Variant[String, Boolean]   $api_cert = false,
   Variant[String, Boolean]   $api_key = false,
-  String,                    $api_name,
-  String                     $fernet_key,
   Enum['running', 'stopped'] $service_ensure = 'running',
   Boolean                    $service_enable = true,
   Variant[String, Boolean]   $web_cert = false,
   Variant[String, Boolean]   $web_key = false,
-  String                     $web_name,
 ){
   if($api_cert) {
-    $api_url = "https://${api_name}" 
+    $api_url = "https://${api_name}"
   } else {
-    $api_url = "http://${api_name}" 
+    $api_url = "http://${api_name}"
   }
 
   if($web_cert) {
-    $web_url = "https://${web_name}" 
+    $web_url = "https://${web_name}"
   } else {
-    $web_url = "http://${web_name}" 
+    $web_url = "http://${web_name}"
   }
 }
