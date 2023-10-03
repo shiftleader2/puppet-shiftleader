@@ -18,10 +18,7 @@ class shiftleader::api::config (
     'path'   => '/etc/shiftleader2/settings.ini',
     'tag'    => 'shiftleader-config',
   }
-  $db_connection = @(DBCONN/L),
-    mysql+pymysql://${database_username}
-    :${database_password}@${database_server}/${database_name}
-    |-DBCONN
+  $db_connection = "mysql+pymysql://${database_username}:${database_password}@${database_server}/${database_name}"
 
   ini_setting {
     'sl2api-loglevel':
