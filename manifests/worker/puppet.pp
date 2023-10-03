@@ -7,7 +7,7 @@ class shiftleader::worker::puppet (
   $sl2_username = lookup('shiftleader::worker::username', String)
   $sl2_password = lookup('shiftleader::worker::password', String)
 
-  require ::shiftleader::apt
+  include ::shiftleader::apt
   include ::shiftleader::deps
   
   package { 'shiftleader2-worker-puppet':
