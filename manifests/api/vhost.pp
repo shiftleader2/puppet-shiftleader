@@ -4,6 +4,7 @@ define shiftleader::api::vhost (
   String $tls_cert_path = '',
   String $tls_key_path = '',
 ){
+  include ::apache
   include ::shiftleader::deps
 
   if($tls) {
