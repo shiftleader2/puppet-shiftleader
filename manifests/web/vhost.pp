@@ -16,7 +16,7 @@ define shiftleader::web::vhost (
 
     apache::vhost { "ShiftLeader2-WEB-${name}":
       servername      => $name,
-      port            => '80',
+      port            => 80,
       docroot         => '/var/www/shiftleader',
       redirect_source => ['/'],
       redirect_dest   => ["https://${$name}"],
