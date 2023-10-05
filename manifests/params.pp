@@ -4,6 +4,7 @@ class shiftleader::params (
   String                     $database_password,
   String                     $database_server,
   String                     $fernet_key,
+  String                     $puppetapi_name,
   String                     $puppetcaserver,
   String                     $puppetserver,
   String                     $web_name,
