@@ -6,7 +6,7 @@ class shiftleader::web::config (
 
   ini_setting { 'sl2web-api':
     ensure  => present,
-    path    => '/var/www/shiftleader/settings.js'
+    path    => '/var/www/shiftleader/settings.js',
     setting => 'api',
     value   => "\"${api_url}\"",
     tag     => 'shiftleader-config',
