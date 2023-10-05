@@ -1,17 +1,16 @@
 # Configures an apache2 virtual-host for the Shiftleader API 
 define shiftleader::api::vhost (
-  Boolean $tls          = false,
-  String $tls_cert_path = '',
-  String $tls_key_path = '',
+  Variant[String, Boolean] $cert = false,
+  Variant[String, Boolean] $key = false,
 ){
   include ::shiftleader::deps
 
-  if($tls) {
+  if($cert) {
     $tls_options = {
       'port'     => 443,
       'ssl'      => true,
-      'ssl_cert' => $tls_cert_path, 
-      'ssl_key'  => $tls_key_path, 
+      'ssl_cert' => $cert, 
+      'ssl_key'  => $key, 
     }
   } else {
     $tls_options = {
