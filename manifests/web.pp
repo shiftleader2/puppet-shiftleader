@@ -15,8 +15,8 @@ class shiftleader::web (
     tag    => 'shiftleader-package',
   }
   
-  ::shiftleader::web::vhost { $api_name:
-    cert => $api_cert, 
-    key  => $api_key,
+  ::shiftleader::web::vhost { $web_name:
+    cert => $web_cert, 
+    key  => $web_key,
   }
 }
