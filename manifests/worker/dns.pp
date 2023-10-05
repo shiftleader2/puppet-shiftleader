@@ -1,5 +1,5 @@
-# Installs and configures the puppet-related workers for ShiftLeader2
-class shiftleader::worker::puppet (
+# Installs and configures the dns-worker for ShiftLeader2
+class shiftleader::worker::dns (
   Enum['running', 'stopped'] $service_ensure = $shiftleader::params::service_ensure, 
   Boolean                    $service_enable = $shiftleader::params::service_enable,
 ) inherits shiftleader::params {
@@ -7,15 +7,12 @@ class shiftleader::worker::puppet (
   include ::shiftleader::deps
   include ::shiftleader::worker::config
   
-  package { 'shiftleader2-worker-puppet':
+  package { 'shiftleader2-worker-dns':
     ensure => 'present',
     tag    => 'shiftleader-package',
   }
 
-  service { [
-   'shiftleader2-puppet-r10k-downloader',
-   'shiftleader2-puppet-r10k-envupdate',
-  ]:
+  service { 'shiftleader2-dns-worker':
     ensure => $service_ensure,
     enable => $service_enable,
     tag    => 'shiftleader-service',
