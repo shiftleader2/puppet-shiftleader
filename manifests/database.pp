@@ -1,9 +1,9 @@
 # Creates an MySQL database for shiftleader 
 class shiftleader::database (
+  String $host     = $shiftleader::params::database_allowed_hosts,
   String $database = $shiftleader::params::database_name, 
   String $username = $shiftleader::params::database_username,
   String $password = $shiftleader::params::database_password,
-  String $host     = '127.0.0.1',
 ) inherits shiftleader::params {
   include ::shiftleader::deps
 

@@ -11,6 +11,7 @@ class shiftleader::params (
   String                     $admin_group = 'Administrators',
   Variant[String, Boolean]   $api_cert = false,
   Variant[String, Boolean]   $api_key = false,
+  String                     $database_allowed_hosts = '127.0.0.1',
   String                     $database_name = 'shiftleader2',
   String                     $database_username = 'shiftleader2',
   Enum['running', 'stopped'] $service_ensure = 'running',
