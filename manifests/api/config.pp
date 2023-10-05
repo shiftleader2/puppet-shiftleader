@@ -7,6 +7,7 @@ class shiftleader::api::config (
   $database_username = $shiftleader::params::database_username,
   $database_password = $shiftleader::params::database_password,
   $fernet_key        = $shiftleader::params::fernet_key,
+  $keep_logs         = 10,
   $puppetcaserver    = $shiftleader::params::puppetcaserver,
   $puppetserver      = $shiftleader::params::puppetserver,
   $web_url           = $shiftleader::params::web_url,
@@ -61,6 +62,11 @@ class shiftleader::api::config (
       setting   => 'uri',
       show_diff => false,
       value     => $db_connection,
+      *         => $common;
+    'sl2api-puppet-keeplogs':
+      section   => 'puppet',
+      setting   => 'keep_logs',
+      value     => $keep_logs,
       *         => $common;
   }
 }
