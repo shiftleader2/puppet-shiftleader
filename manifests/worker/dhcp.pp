@@ -8,6 +8,7 @@ class shiftleader::worker::dhcp (
   include ::shiftleader::apt
   include ::shiftleader::deps
   include ::shiftleader::worker::config
+  include ::shiftleader::worker::config::dhcp
   
   package { 'shiftleader2-worker-dhcp':
     ensure => 'present',
@@ -18,14 +19,5 @@ class shiftleader::worker::dhcp (
     ensure => $service_ensure,
     enable => $service_enable,
     tag    => 'shiftleader-service',
-  }
-
-  ini_setting { 'Shiftleader2-worker-dhcp-serverset':
-    ensure  => 'present',
-    path    => '/etc/shiftleader2/workers.ini',
-    section => 'dhcp',
-    setting => 'serverset',
-    value   => $serverset,
-    tag     => 'shiftleader-config',
   }
 }
