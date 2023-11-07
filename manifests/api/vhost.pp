@@ -25,8 +25,8 @@ define shiftleader::api::vhost (
     wsgi_application_group      => '%{GLOBAL}',
     wsgi_daemon_process         => "sl2-${name}",
     wsgi_daemon_process_options => {
-      processes => 1,
-      threads   => 4, 
+      processes => $::facts['processors']['count'],
+      threads   => 1, 
       user      => 'sl2',
       group     => 'www-data',
     },
