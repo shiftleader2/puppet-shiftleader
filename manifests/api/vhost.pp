@@ -2,6 +2,7 @@
 define shiftleader::api::vhost (
   Variant[String, Boolean] $cert = false,
   Variant[String, Boolean] $key = false,
+  Integer                  $processes = $::facts['processors']['count'],
 ){
   include ::shiftleader::deps
 
@@ -25,7 +26,7 @@ define shiftleader::api::vhost (
     wsgi_application_group      => '%{GLOBAL}',
     wsgi_daemon_process         => "sl2-${name}",
     wsgi_daemon_process_options => {
-      processes => $::facts['processors']['count'],
+      processes => $processes, 
       threads   => 1, 
       user      => 'sl2',
       group     => 'www-data',
