@@ -4,7 +4,6 @@ define shiftleader::api::vhost (
   Variant[String, Boolean] $key = false,
   Integer                  $processes = $::facts['processors']['count'],
 ){
-  include ::apache
   include ::shiftleader::deps
 
   if($cert) {

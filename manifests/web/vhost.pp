@@ -3,7 +3,6 @@ define shiftleader::web::vhost (
   Variant[String, Boolean] $cert = false,
   Variant[String, Boolean] $key = false,
 ){
-  include ::apache
   include ::shiftleader::deps
 
   if($cert) {
