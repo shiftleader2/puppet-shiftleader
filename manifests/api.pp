@@ -5,6 +5,8 @@ class shiftleader::api (
   Variant[String, Boolean]   $api_key        = $shiftleader::params::api_key,
   Integer                    $processes      = $::facts['processors']['count'],
   String                     $puppetapi_name = $shiftleader::params::puppetapi_name,
+  String                     $puppetapi_cert = "/etc/puppetlabs/puppet/ssl/certs/${::fqdn}.pem",
+  String                     $puppetapi_key  = "/etc/puppetlabs/puppet/ssl/private_keys/${::fqdn}.pem", 
   Enum['running', 'stopped'] $service_ensure = $shiftleader::params::service_ensure, 
   Boolean                    $service_enable = $shiftleader::params::service_enable,
 ) inherits shiftleader::params {
@@ -24,8 +26,8 @@ class shiftleader::api (
   }
 
   ::shiftleader::api::vhost { $puppetapi_name:
-    cert      => "/etc/puppetlabs/puppet/ssl/certs/${::fqdn}.pem", 
-    key       => "/etc/puppetlabs/puppet/ssl/private_keys/${::fqdn}.pem",
+    cert      => $puppetapi_cert,
+    key       => $puppetapi_key,
     processes => $processes,
   }
 }
