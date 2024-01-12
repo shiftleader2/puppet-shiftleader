@@ -23,6 +23,7 @@ define shiftleader::api::vhost (
     docroot                     => "/var/lib/shiftleader2",
     servername                  => $name,
     tag                         => 'shiftleader-vhost',
+    add_listen                  => false,
     wsgi_application_group      => '%{GLOBAL}',
     wsgi_daemon_process         => "sl2-${name}",
     wsgi_daemon_process_options => {

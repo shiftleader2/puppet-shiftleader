@@ -18,6 +18,7 @@ define shiftleader::web::vhost (
       servername      => $name,
       port            => 80,
       docroot         => '/var/www/shiftleader',
+      add_listen      => false,
       redirect_source => ['/'],
       redirect_dest   => ["https://${$name}"],
       redirect_status => ['permanent'],
@@ -30,9 +31,10 @@ define shiftleader::web::vhost (
   }
 
   apache::vhost { $vhost_name:
-    docroot                     => '/var/www/shiftleader',
-    servername                  => $name,
-    tag                         => 'shiftleader-vhost',
-    *                           => $tls_options,
+    add_listen => false,
+    docroot    => '/var/www/shiftleader',
+    servername => $name,
+    tag        => 'shiftleader-vhost',
+    *          => $tls_options,
   }
 }
