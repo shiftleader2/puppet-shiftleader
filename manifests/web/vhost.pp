@@ -1,5 +1,6 @@
 # Configures an apache2 virtual-host for the Shiftleader WEB-interface 
 define shiftleader::web::vhost (
+  Optional[String]         $access_log_format = undef,
   Variant[String, Boolean] $cert = false,
   Variant[String, Boolean] $key = false,
 ){
@@ -10,8 +11,8 @@ define shiftleader::web::vhost (
     $tls_options = {
       'port'     => 443,
       'ssl'      => true,
-      'ssl_cert' => $cert, 
-      'ssl_key'  => $key, 
+      'ssl_cert' => $cert,
+      'ssl_key'  => $key,
     }
 
     apache::vhost { "ShiftLeader2-WEB-${name}":
@@ -31,10 +32,11 @@ define shiftleader::web::vhost (
   }
 
   apache::vhost { $vhost_name:
-    add_listen => false,
-    docroot    => '/var/www/shiftleader',
-    servername => $name,
-    tag        => 'shiftleader-vhost',
-    *          => $tls_options,
+    add_listen        => false,
+    docroot           => '/var/www/shiftleader',
+    servername        => $name,
+    tag               => 'shiftleader-vhost',
+    access_log_format => $access_log_format,
+    *                 => $tls_options,
   }
 }
