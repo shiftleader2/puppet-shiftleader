@@ -10,6 +10,8 @@ class shiftleader::database (
   mysql::db { $database:
     user     => $username,
     password => $password,
+    charset  => 'utf8mb3',
+    collate  => 'utf8mb3_general_ci'
     host     => $host,
     grant    => ['CREATE', 'ALTER',
                   'DELETE', 'INSERT',
