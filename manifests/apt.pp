@@ -9,7 +9,8 @@ class shiftleader::apt (
 
   $release = $::lsbdistcodename ? {
     'focal' => 'jammy',
-    default  => $::lsbdistcodename,
+    'noble' => 'jammy',
+    default => $::lsbdistcodename,
   }
 
   apt::source { 'ShiftLeader2':
