@@ -3,6 +3,7 @@ class shiftleader::web (
   Optional[String]           $access_log_format = undef,
   Enum['running', 'stopped'] $service_ensure    = $shiftleader::params::service_ensure,
   Boolean                    $service_enable    = $shiftleader::params::service_enable,
+  Array[String]              $web_aliases       = $shiftleader::params::web_aliases,
   String                     $web_name          = $shiftleader::params::web_name,
   Variant[String, Boolean]   $web_cert          = $shiftleader::params::web_cert,
   Variant[String, Boolean]   $web_key           = $shiftleader::params::web_key,
@@ -20,5 +21,6 @@ class shiftleader::web (
     access_log_format => $access_log_format,
     cert              => $web_cert,
     key               => $web_key,
+    aliases           => $web_aliases, 
   }
 }

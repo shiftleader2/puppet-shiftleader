@@ -18,6 +18,7 @@ class shiftleader::params (
   Boolean                    $external_tls = false,
   Enum['running', 'stopped'] $service_ensure = 'running',
   Boolean                    $service_enable = true,
+  Array[String]              $web_aliases = [],
   Variant[String, Boolean]   $web_cert = false,
   Variant[String, Boolean]   $web_key = false,
 ){
@@ -29,7 +30,9 @@ class shiftleader::params (
 
   if($web_cert or $external_tls) {
     $web_url = "https://${web_name}"
+    $web_urls = $web_aliases.map | $alias | { "https://${alias}" }
   } else {
     $web_url = "http://${web_name}"
+    $web_urls = $web_aliases.map | $alias | { "http://${alias}" }
   }
 }

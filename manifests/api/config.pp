@@ -11,6 +11,7 @@ class shiftleader::api::config (
   $puppetcaserver    = $shiftleader::params::puppetcaserver,
   $puppetserver      = $shiftleader::params::puppetserver,
   $web_url           = $shiftleader::params::web_url,
+  $web_urls          = $shiftleader::params::web_urls,
 ) inherits shiftleader::params {
   include ::shiftleader::deps
 
@@ -20,6 +21,15 @@ class shiftleader::api::config (
     'tag'    => 'shiftleader-config',
   }
   $db_connection = "mysql+pymysql://${database_username}:${database_password}@${database_server}/${database_name}"
+
+  $web_urls.each | $index, $alias | {
+    ini_setting{ "sl2api-cors-${index}":
+      section => 'cors', 
+      setting => "alias${index}",
+      value   => $alias,
+      *       => $common,
+    }
+  }
 
   ini_setting {
     'sl2api-loglevel':

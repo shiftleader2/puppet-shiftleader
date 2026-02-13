@@ -3,6 +3,7 @@ define shiftleader::web::vhost (
   Optional[String]         $access_log_format = undef,
   Variant[String, Boolean] $cert = false,
   Variant[String, Boolean] $key = false,
+  Array[String]            $aliases = [],
 ){
   include ::shiftleader::deps
 
@@ -17,6 +18,7 @@ define shiftleader::web::vhost (
 
     apache::vhost { "ShiftLeader2-WEB-${name}":
       servername      => $name,
+      serveraliases   => $aliases,
       port            => 80,
       docroot         => '/var/www/shiftleader',
       add_listen      => false,
@@ -35,6 +37,7 @@ define shiftleader::web::vhost (
     add_listen        => false,
     docroot           => '/var/www/shiftleader',
     servername        => $name,
+    serveraliases   => $aliases,
     tag               => 'shiftleader-vhost',
     access_log_format => $access_log_format,
     *                 => $tls_options,
