@@ -5,12 +5,10 @@ class shiftleader::apt (
   include ::apt
   include ::shiftleader::deps
 
-  $distrib = downcase($::operatingsystem)
-
-  $release = $::lsbdistcodename ? {
+  $release = $::facts['os']['distro']['codename'] ? {
     'focal' => 'jammy',
     'noble' => 'jammy',
-    default => $::lsbdistcodename,
+    default => $::facts['os']['distro']['codename'],
   }
 
   apt::source { 'ShiftLeader2':
